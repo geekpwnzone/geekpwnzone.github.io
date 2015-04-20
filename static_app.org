@@ -1,0 +1,127 @@
+#+TITLE: 静态应用解决方案
+* 静态应用解决方案
+** static site generator
+*** Hexo
+    https://github.com/hexojs
+    
+    http://www.k-research.net/blog/write-blog-with-org-hexo.html
+    
+    http://blog.fens.me/hexo-blog-github themes 各种配置文件
+*** octopress
+    http://octopress.org/
+
+    http://blog.paphus.com/blog/2012/08/01/introducing-octopress-blogging-for-org-mode/
+
+    https://github.com/tomalexander/orgmode-octopress
+*** jekyll
+    http://cheukyin.github.io/jekyll/emacs/2014-08/org2jekyll.html
+** rich tag language
+*** markdown
+*** org-mode
+**** template
+     cdn
+
+     bower_components
+
+     node_modules
+
+     vendor
+**** css
+     http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
+
+     http://orgmode.org/org.cs
+
+     http://orgmode.org/worg/worg.css
+**** Publish
+     http://orgmode.org/manual/Exporting.html
+
+     http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
+
+     [[https://github.com/mooz/org-js][org-js]] 使用js来解析 `org-mode`
+
+     [[https://github.com/yoshinari-nomura/org-octopress][org-octopress]]
+
+     [[https://github.com/kelvinh/org-page][org-page]]
+**** org-mode var
+     org-mode html title
+     #+BEGIN_SRC emacs-lisp
+#+TITLE: the title to be shown (default is the buffer name)
+     #+END_SRC
+
+     org-html-head
+     
+     org-html-head-extra
+     
+     org-html-postamble
+     org-html-postamble-format
+     
+     #+BEGIN_SRC emacs-lisp
+(setq org-export-html-postamble-format 
+      '(("en" "<p class=\"postamble\">Last Updated %d. Created by %c"</p>)))
+     #+END_SRC
+**** code
+     http://cheukyin.github.io/jekyll/emacs/2014-08/org2jekyll.html
+     
+     #+BEGIN_SRC emacs-lisp
+#+STYLE: <link rel="stylesheet" type="text/css" href="./css/markdown.css" />
+     #+END_SRC
+     
+     #+BEGIN_SRC emacs-lisp
+(setq org-html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"mystyles.css\" />")
+     #+END_SRC
+     
+     #+begin_src python
+@requires_authorization
+def somefunc(param1='', param2=0):
+    r'''A docstring'''
+    if param1 > param2: # interesting
+        print 'Gre\'ater'
+    return (param2 - param1 + 1) or None
+
+class SomeClass:
+    pass
+
+>>> message = '''interpreter
+... prompt'''
+     #+end_src 
+     
+     #+BEGIN_SRC PHP
+phpinfo();
+
+function test(){
+    print 'hello';
+}
+     #+END_SRC
+     
+     code hightlight
+     http://stackoverflow.com/questions/10991704/org-mode-failed-to-highlight-c-source-code-when-exporting-html
+     
+     http://stackoverflow.com/questions/10642888/syntax-highlighting-within-begin-src-block-in-emacs-orgmode-not-working
+     
+     http://orgmode.org/worg/org-contrib/babel/examples/fontify-src-code-blocks.html
+     
+     htmlize.el
+     
+     c-c c-e ,并且选择h,即export as HTML
+     
+     http://cheukyin.github.io/jekyll/emacs/2014-08/org2jekyll.html
+     
+     http://orgmode.org/manual/HTML-export.html
+     
+     http://orgmode.org/manual/Quoting-HTML-tags.html#Quoting-HTML-tags
+     #+BEGIN_SRC emacs-lisp
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="./css/markdown.css" />
+#+HTML_HEAD_EXTRA: <script src="./static/jquery-2.js"></script>
+#+HTML_HEAD_EXTRA: <script src="./static/highlight.pack.js"></script>
+#+HTML_HEAD_EXTRA: <script src="./js/main.js"></script>
+#+HTML_HEAD_EXTRA: <link class="codestyle" rel="alternate stylesheet" href="./static/styles/railscasts.css">
+#+HTML: <script>alert(/xss/)</script>
+     #+END_SRC
+     
+     http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
+     http://orgmode.org/worg/code/org-info-js/
+     
+     color-theme
+     http://www.nongnu.org/color-theme/
+     
+     http://fly.srk.fer.hr/~hniksic/emacs/htmlize.el.cgi
